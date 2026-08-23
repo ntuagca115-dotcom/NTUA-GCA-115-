@@ -1,4 +1,5 @@
 import { QR_ITEMS } from "../data";
+import { assetUrl } from "../lib/media";
 
 export default function QrPage() {
   return (
@@ -16,7 +17,7 @@ export default function QrPage() {
             className="flex flex-col items-center rounded-[4px] border border-ink/10 bg-white p-6 text-center transition hover:border-teal"
           >
             <div className="bg-white p-4">
-              <img src={item.file} alt={item.title} className="h-44 w-44 bg-white object-contain" />
+              <img src={assetUrl(item.file)} alt={item.title} className="h-44 w-44 bg-white object-contain" />
             </div>
             <h2 className="mt-4 font-sans text-xl font-medium">{item.title}</h2>
             <p className="mt-1 font-sans text-sm text-ink/50">{item.caption}</p>

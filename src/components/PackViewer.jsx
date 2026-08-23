@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { CARDS, QR_ITEMS } from "../data";
+import { assetUrl } from "../lib/media";
 import FlipCard from "./FlipCard";
 
 function FaceSwitch({ flipped, setFlipped }) {
@@ -22,8 +23,8 @@ function FaceSwitch({ flipped, setFlipped }) {
           >
             {active && (
               <motion.span
-                layoutId="face-pill"
                 className="absolute inset-0 rounded-full bg-teal"
+                layout={false}
                 transition={{ type: "spring", stiffness: 420, damping: 32 }}
               />
             )}
@@ -51,7 +52,7 @@ function QrEmbed() {
           className="flex flex-col items-center rounded-[4px] border border-ink/10 bg-white p-2 text-center transition hover:border-teal"
         >
           <div className="bg-white p-1.5">
-            <img src={item.file} alt={item.title} className="h-20 w-20 bg-white object-contain" />
+            <img src={assetUrl(item.file)} alt={item.title} className="h-20 w-20 bg-white object-contain" />
           </div>
           <p className="mt-1 font-sans text-[11px] font-medium leading-tight">{item.title}</p>
           <p className="font-sans text-[10px] text-ink/45">{item.caption}</p>
@@ -127,6 +128,7 @@ export default function PackViewer({ index, setIndex, flipped, setFlipped, onFin
 
   const go = (next) => {
     if (next >= CARDS.length) {
+      setFlipped(false);
       onFinish?.();
       return;
     }

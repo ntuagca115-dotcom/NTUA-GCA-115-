@@ -30,8 +30,12 @@ export default function App() {
     const onKey = (e) => {
       if (tab !== "pack" || phase !== "reader") return;
       if (e.key === "ArrowRight") {
-        if (index >= 8) setPhase("tea");
-        else setIndex((i) => i + 1);
+        if (index >= 8) {
+          setFlipped(false);
+          setPhase("tea");
+        } else {
+          setIndex((i) => i + 1);
+        }
       }
       if (e.key === "ArrowLeft") setIndex((i) => Math.max(0, i - 1));
       if (e.key === " " || e.key.toLowerCase() === "f") {
@@ -46,7 +50,7 @@ export default function App() {
   return (
     <div className="relative min-h-screen font-sans">
       <Header tab={tab} setTab={setTab} onLogoClick={goHome} />
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         {tab === "pack" && phase === "envelope" && (
           <motion.div key={`envelope-${packKey}`} exit={{ opacity: 0 }} transition={{ duration: 0.35 }}>
             <EnvelopeUnbox onComplete={() => setPhase("reader")} />
@@ -65,7 +69,10 @@ export default function App() {
               setIndex={setIndex}
               flipped={flipped}
               setFlipped={setFlipped}
-              onFinish={() => setPhase("tea")}
+              onFinish={() => {
+                setFlipped(false);
+                setPhase("tea");
+              }}
             />
           </motion.div>
         )}
@@ -79,6 +86,7 @@ export default function App() {
           >
             <TeaFinale
               onBack={() => {
+                setFlipped(false);
                 setIndex(8);
                 setPhase("reader");
               }}

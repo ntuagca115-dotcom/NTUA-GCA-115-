@@ -1,30 +1,16 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Search, X } from "lucide-react";
 import { cardCandidates } from "../lib/media";
 import SmartImg from "./SmartImg";
 
-const preserve = { transformStyle: "preserve-3d" };
-
 export default function FlipCard({ card, flipped }) {
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [zoom, setZoom] = useState(false);
-  const face = flipped ? "back" : "front";
-  const srcList = cardCandidates(card.id, face);
+  const srcList = cardCandidates(card.id, flipped ? "back" : "front");
 
   return (
     <>
-      <div
-        className="scene-3d relative mx-auto w-full max-w-[420px]"
-        onMouseMove={(e) => {
-          if (zoom) return;
-          const rect = e.currentTarget.getBoundingClientRect();
-          const px = (e.clientX - rect.left) / rect.width - 0.5;
-          const py = (e.clientY - rect.top) / rect.height - 0.5;
-          setTilt({ x: py * -8, y: px * 10 });
-        }}
-        onMouseLeave={() => setTilt({ x: 0, y: 0 })}
-      >
+      <div className="relative mx-auto w-full max-w-[420px]" style={{ perspective: "1200px" }}>
         <button
           type="button"
           onClick={() => setZoom(true)}
@@ -34,23 +20,18 @@ export default function FlipCard({ card, flipped }) {
           <Search size={16} strokeWidth={1.8} />
         </button>
 
-        <div
-          className="relative aspect-[4/3] w-full"
-          style={{
-            ...preserve,
-            transform: `rotateX(${tilt.x}deg)`,
-            transition: zoom ? undefined : "transform 180ms ease-out",
-          }}
-        >
-          <motion.div
+        <div className="relative aspect-[4/3] w-full" style={{ perspective: "1200px" }}>
+          <div
             className="absolute inset-0"
-            style={preserve}
-            animate={{ rotateY: flipped ? 180 : 0 }}
-            transition={{ duration: 0.78, ease: [0.22, 1, 0.36, 1] }}
+            style={{
+              transformStyle: "preserve-3d",
+              transform: `rotateY(${flipped ? 180 : 0}deg)`,
+              transition: "transform 0.7s cubic-bezier(0.22, 1, 0.36, 1)",
+            }}
           >
             <div
               className="absolute inset-0 overflow-hidden rounded-[4px] border border-ink/10 bg-white shadow-[0_22px_54px_rgba(28,26,22,0.12)]"
-              style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden", ...preserve }}
+              style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
             >
               <SmartImg
                 key={`${card.id}-front`}
@@ -71,7 +52,6 @@ export default function FlipCard({ card, flipped }) {
                 transform: "rotateY(180deg)",
                 backfaceVisibility: "hidden",
                 WebkitBackfaceVisibility: "hidden",
-                ...preserve,
               }}
             >
               <SmartImg
@@ -91,7 +71,7 @@ export default function FlipCard({ card, flipped }) {
                 }
               />
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 
