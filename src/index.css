@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Noto Sans TC", "Microsoft JhengHei", "Heiti TC", "PingFang TC", sans-serif;
+  --font-display: "Noto Sans TC", "Microsoft JhengHei", "Heiti TC", sans-serif;
+  --font-serif: "Noto Sans TC", "Microsoft JhengHei", "Heiti TC", sans-serif;
+  --color-ink: #1c1a18;
+  --color-paper: #fffcf4;
+  --color-kraft: #d2a679;
+  --color-teal: #00aca2;
+  --color-blush: #f1b0c9;
+  --color-butter: #eceaac;
+  --color-sea: #00aca2;
+  --color-clay: #f1b0c9;
+  --color-sage: #eceaac;
+  --color-cyan: #00aca2;
+  --color-blush: #f1b0c9;
+  --color-butter: #eceaac;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--color-ink);
+  background-color: #ffffff;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.07'/%3E%3C/svg%3E"),
+    linear-gradient(180deg, #ffffff 0%, #f7f7f4 100%);
+  background-attachment: fixed;
+}
+
+.paper-fiber {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.kraft {
+  background-color: #d2a679;
+  background-image:
+    linear-gradient(165deg, rgba(255, 236, 210, 0.42) 0%, transparent 44%),
+    linear-gradient(18deg, rgba(110, 64, 28, 0.18) 0%, transparent 48%),
+    repeating-linear-gradient(94deg, transparent 0 10px, rgba(90, 50, 20, 0.04) 10px 11px),
+    linear-gradient(165deg, #e6c49a 0%, #d2a679 42%, #c08c58 78%, #a87440 100%);
+}
+
+.kraft-inner {
+  background-color: #e3c39a;
+  background-image: linear-gradient(180deg, #f0d7b4 0%, #d2a679 100%);
+}
+
+.scene-3d {
+  perspective: 1400px;
+  perspective-origin: 50% 40%;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00aca2 18%, #eceaac 50%, #f1b0c9 82%, transparent);
+}
+
+.hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #00aca2 18%, #eceaac 50%, #f1b0c9 82%, transparent);
+}
+
+.editorial p + p {
+  margin-top: 1rem;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00aca2, #f1b0c9);
+  border-radius: 99px;
+}
