@@ -357,7 +357,7 @@ export const CARDS = [
       { type: "item", title: "學期間", text: "週一至週五 09:00–17:00；週六 09:00–17:00（週日休息）" },
       { type: "item", title: "午休", text: "12:00–13:30" },
       { type: "h", text: "系學會" },
-      { type: "item", title: "會長　國語者", text: "0971-798-371　rogerkuo1222@gmail.com" },
+      { type: "item", title: "會長　郭宇哲", text: "0971-798-371　rogerkuo1222@gmail.com" },
       { type: "item", title: "副會長　黃楚茵", text: "0909-733-906　chuuyinooz@gmail.com" },
     ],
   },
