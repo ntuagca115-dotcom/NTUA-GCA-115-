@@ -262,6 +262,7 @@ export const CARDS = [
       { type: "item", title: "體育課程｜6 學分", text: "必修 2、選修 4。" },
       { type: "item", title: "院課程", text: "傳院選修 2 學分。" },
       { type: "item", title: "跨域選修｜4 學分", text: "跨校、跨院、跨系課程皆可列入。" },
+      { type: "item", title: "自由選修｜5 學分", text: "" },
       { type: "item", title: "校內專業實習", text: "0 學分，上下學期須依規定完成事項。" },
       { type: "p", text: "學分規定可能因年度調整。以上依 115 學年度學分表整理，每學期開課前請再確認系上最新規劃與系辦公告，避免畢業前才發現學分不足。" },
     ],
